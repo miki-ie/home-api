@@ -80,9 +80,16 @@ if(isset($_POST['KEY']) && strcmp($_POST['APIKEY'], HOME_API_KEY) == 0) {
 			announce(GOOGLE_HOME_1, $text);
 		}
 		break;
-	case 'info':
+	case 'UrgentInfo':
 		logger("Start info from tweet","INFO");
 		pushLine('【緊急通知】',$text);
+		if(checkTime('7:00','19:00')) {
+			announce(GOOGLE_HOME_2, $text);
+			announce(GOOGLE_HOME_3, $text);
+		}
+		if(checkTime('6:00','23:00')) {
+			announce(GOOGLE_HOME_1, $text);
+		}
 		break;
 	case 'shutdownPC':
 		logger("Start shutdownPC","INFO");
